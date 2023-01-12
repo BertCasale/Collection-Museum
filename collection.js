@@ -1,1 +1,1 @@
-let amiibos = [];
+let amiibosCollection = {};

@@ -114,8 +114,38 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                     //append the image to the article 
                     amiiboArticle.append(amiiboImg);
 
+                    //create a form, input, and button
+                    const quantityForm = document.createElement("form");
+                    const quantityInput = document.createElement("input");
+                    const collectButton = document.createElement("button");
 
-                    //append the article to the results div
+                    quantityInput.type = "number"
+                    collectButton.type = "submit"
+                    collectButton.innerText = "Add to Collection"
+                    quantityForm.append(quantityInput)
+                    quantityForm.append(document.createElement("br"))
+                    quantityForm.append(collectButton)
+
+                    
+                    
+
+                    //add an event to the form
+                    quantityForm.addEventListener("submit", (event) => {
+                        event.preventDefault();
+
+                        //get the amiibos id
+                        const amiiboId = `${amiibo.head}${amiibo.tail}`
+                        //create a key value pair for the amiibo id and the quantity
+                        amiibosCollection[amiiboId] = quantityInput.value;
+                        
+                        console.log(amiibosCollection)
+                    })
+
+
+
+                    //append the form to the article
+                    amiiboArticle.append(quantityForm);
+                    //append the article  to the results div
                     amiiboResults.append(amiiboArticle);
 
                 }
