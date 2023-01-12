@@ -1,7 +1,7 @@
 
 .sticky {
     display:grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-template-areas: " . home profile" ;
     position: sticky; 
     top:0;
@@ -31,5 +31,25 @@ body {
 }
 
 .selection img {
+    height: 200px;
+}
+
+#results {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-areas: " . no no . ";
+    border: solid #FD9E74;
+}
+
+.no {
+    grid-area: no;
+}
+
+article {
+    margin: 20px -30px;
+    padding: 5px;
+    border: solid black;
+}
+article img {
     height: 200px;
 }

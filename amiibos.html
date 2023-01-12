@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css"/>
     <script defer src="./main.js" ></script>
+
     <title>Amiibo Search</title>
 </head>
 <body>
@@ -22,21 +23,24 @@
     <h1>Search for an Amiibo</h1>
 
     <h2>Search by character name,  amiibo series, or both!</h2>
-
-    <form>
-        <label>Character Name:</label>
-        <input class="character"/>
+    <form class="amiibo-search">
+        <!-- search by character -->
+        <label for="character">Character Name:</label>
+        <input type="text" name="character"/>
         <br>
-        <label>
-            Amiibo Series
+        <!-- search by amiibo series -->
+        <label for="series">
+            Amiibo Series:
             <select id="series-box" name="series">
-                <option>Select the series </option>
+                <option>Select the series</option>
             </select>
         </label>
         <br>
         <button type="submit">Search</button>
     </form>
 
+    <div class="amiibo-results" id="results">
+    </div>
 
 </body>
 </html>
