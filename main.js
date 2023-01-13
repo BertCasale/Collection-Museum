@@ -7,6 +7,53 @@ let amiiboURL = "https://amiiboapi.com/api/amiibo/";
 //get the div where the results will go
 let amiiboResults = document.querySelector(".amiibo-results");
 
+//set the limit of items on each page
+const amiiboPerPageLimit = 20;
+
+//function for creating page
+function pages(startPage, elemArr, countPerPageLimit){
+    
+    //calculate max page number
+    const maxPages = Math.ceil(elemArr.length/countPerPageLimit);
+    const pageNumbersDiv = document.getElementById("pagination-numbers");
+    pageNumbersDiv.innerHTML = "";
+    //loop to make page buttons
+        for (let page = 1; page <= maxPages; page++){
+            //create a button
+            const pageNumberButton = document.createElement("button")
+            
+            //set the buttons text to page number
+            pageNumberButton.textContent = page;
+            pageNumberButton.value = page;
+            pageNumberButton.className = "pagination-button"
+
+            //add click events for each button
+            pageNumberButton.addEventListener("click", () => {
+                currentPageFunc(page, elemArr, countPerPageLimit)
+            }) 
+
+            
+            pageNumbersDiv.append(pageNumberButton)
+        }
+        currentPageFunc(startPage, elemArr, countPerPageLimit);
+    
+}
+
+function currentPageFunc(currentPage, arr, countPerPageLimit){
+    //get all the current elements
+    const currentArticles = document.querySelectorAll(".current") 
+    //loop through the current articles and set the class to hidden
+    for (article of currentArticles) {
+        article.className = "hidden";
+    }
+
+    //loop up to the page limit based on the page number
+    for(i = (0 + ((currentPage - 1)* countPerPageLimit)); i < (countPerPageLimit + ((currentPage - 1)* countPerPageLimit)) && i < arr.length; i++) {
+        //set the elemnts on that page to current
+        arr[i].className = "current"
+    }
+}
+
 //get the list of amiibo series
 fetch("https://amiiboapi.com/api/amiiboseries/")
     .then((res) =>{
@@ -70,9 +117,6 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
         amiiboURL += `?amiiboSeries=${seriesName}`
     }
 
-    console.log(amiiboURL)
-    console.log(seriesName, charaName);
-
     await fetch(amiiboURL)
     //get the data
         .then((res) => {
@@ -102,7 +146,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
             if (response){
                 //reset the div
                 amiiboResults.innerHTML = "";
-                console.log(response.amiibo)
+
                 //loop through the amiibos
                 for (amiibo of response.amiibo) {
                     //create an article for the amiibo
@@ -120,35 +164,56 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                     const collectButton = document.createElement("button");
 
                     quantityInput.type = "number"
+                    quantityInput.placeholder = "Quantity"
                     collectButton.type = "submit"
                     collectButton.innerText = "Add to Collection"
                     quantityForm.append(quantityInput)
                     quantityForm.append(document.createElement("br"))
                     quantityForm.append(collectButton)
 
-                    
-                    
+                    //get the amiibos id
+                    const amiiboId = `${amiibo.head}${amiibo.tail}`
+                    const amiiboName = amiibo.name
 
                     //add an event to the form
                     quantityForm.addEventListener("submit", (event) => {
                         event.preventDefault();
 
-                        //get the amiibos id
-                        const amiiboId = `${amiibo.head}${amiibo.tail}`
+                        //check if the value isnt 0
+                        if (quantityInput.value > 0) {
+
                         //create a key value pair for the amiibo id and the quantity
                         amiibosCollection[amiiboId] = quantityInput.value;
-                        
+
+                        window.alert(`You have added ${quantityInput.value} ${amiiboName} to your collection.`)
+                        quantityInput.value = "";
+
+                        } else {
+                            //alert message
+                            window.alert("Please enter a number greater than 0.")
+                        }
                         console.log(amiibosCollection)
                     })
 
-
-
                     //append the form to the article
                     amiiboArticle.append(quantityForm);
+
                     //append the article  to the results div
-                    amiiboResults.append(amiiboArticle);
+                    amiiboResults.append
+                    (amiiboArticle);
+                    
+                    //set the articles class to hidden
+                    amiiboArticle.className = "hidden";
+
 
                 }
+                //////Pages
+                
+                const amiiboArticleArr = amiiboResults.querySelectorAll("article");
+
+                //show the first page, but set up every other page
+                let current = 1;
+                pages(current, amiiboArticleArr, amiiboPerPageLimit);
 
             }
 
