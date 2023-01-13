@@ -172,7 +172,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                     quantityForm.append(collectButton)
 
                     //get the amiibos id
-                    const amiiboId = `${amiibo.head}${amiibo.tail}`
+                    const amiiboId = `AMIIBO-${amiibo.head}${amiibo.tail}`
                     const amiiboName = amiibo.name
 
                     //add an event to the form
@@ -182,8 +182,8 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                         //check if the value isnt 0
                         if (quantityInput.value > 0) {
 
-                        //create a key value pair for the amiibo id and the quantity
-                        amiibosCollection[amiiboId] = quantityInput.value;
+                        //set a key value pair for the amiibo id and the quantity and save to session storage
+                        sessionStorage.setItem(amiiboId, `${quantityInput.value}`)
 
                         window.alert(`You have added ${quantityInput.value} ${amiiboName} to your collection.`)
                         quantityInput.value = "";
@@ -192,7 +192,6 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                             //alert message
                             window.alert("Please enter a number greater than 0.")
                         }
-                        console.log(amiibosCollection)
                     })
 
                     //append the form to the article
