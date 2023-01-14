@@ -111,8 +111,14 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                     const amiiboImg = document.createElement("img");
                     amiiboImg.src = amiibo.image;
                     amiiboImg.alt = amiibo.name;
-                    //append the image to the article 
-                    amiiboArticle.append(amiiboImg);
+
+                    //create div for the image
+                    const imgSpan = document.createElement("span");
+                    //append the image to the div
+                    imgSpan.append(amiiboImg);
+
+                    //append the image div to the article
+                    amiiboArticle.append(imgSpan);
 
                     //create a form, input, and button
                     const quantityForm = document.createElement("form");

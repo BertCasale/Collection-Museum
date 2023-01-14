@@ -45,4 +45,4 @@ function currentPageFunc(currentPage, arr, countPerPageLimit){
 let current = 1;
 
 //set the limit of items on each page
-const amiiboPerPageLimit = 20;
+const amiiboPerPageLimit = 40;

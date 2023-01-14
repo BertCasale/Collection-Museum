@@ -1,0 +1,23 @@
+/* 
+  All rules above the @media queries apply to devices 1201px wide and greater (inclusive)
+*/
+
+@media (max-width: 1200px) {
+    /* Rules here apply to devices 1200px to 991px */
+
+    .pagination-button{
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: .9;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    /* Rules here apply to devices from 992px to 769px (inclusive) */
+
+  }
+  
+  @media (max-width: 768px) {
+    /* Rules here apply to devices from from 768px and smaller */
+
+  }
