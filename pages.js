@@ -41,3 +41,8 @@ function currentPageFunc(currentPage, arr, countPerPageLimit){
         arr[i].className = "current"
     }
 }
+//set current to 1, so the first page will always show first
+let current = 1;
+
+//set the limit of items on each page
+const amiiboPerPageLimit = 20;

@@ -7,8 +7,7 @@ let amiiboURL = "https://amiiboapi.com/api/amiibo/";
 //get the div where the results will go
 let amiiboResults = document.querySelector(".amiibo-results");
 
-//set the limit of items on each page
-const amiiboPerPageLimit = 20;
+
 
 
 //get the list of amiibo series
@@ -169,8 +168,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                 
                 const amiiboArticleArr = amiiboResults.querySelectorAll("article");
 
-                //show the first page, but set up every other page
-                let current = 1;
+                //call the pages function
                 pages(current, amiiboArticleArr, amiiboPerPageLimit);
 
             }
