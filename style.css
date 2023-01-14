@@ -55,7 +55,7 @@ article img {
     height: 200px;
 }
 
-article span:hover img{
+article img:hover {
     transform: scale(2);
 }
 
