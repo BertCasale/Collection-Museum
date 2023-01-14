@@ -8,11 +8,11 @@ Object.keys(sessionStorage).forEach((key) => {
 console.log(yourCollection)
 
 
+
+
 //////Import a file
 
 //get the file input
-
-
 let fileInput = document.querySelector(".user-file")
 
 fileInput.onchange = (event) => { 
