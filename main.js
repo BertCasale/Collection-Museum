@@ -122,6 +122,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
 
                     quantityInput.type = "number"
                     quantityInput.placeholder = "Quantity"
+                    quantityInput.className = "quantity"
                     collectButton.type = "submit"
                     collectButton.innerText = "Add to Collection"
                     quantityForm.append(quantityInput)

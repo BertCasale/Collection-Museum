@@ -1,13 +1,24 @@
 
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:#455290
+}
+
 .sticky {
     display:grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: " . home profile" ;
     position: sticky; 
     top:0px;
     background-color: #FD9E74;
     font-size: 30px;
     text-align: center;
+    font-size: 2.5rem;
+}
+
+/* for the image i add */
+.sticky img{
+    height: 100px;
 }
 
 body {
@@ -18,6 +29,7 @@ body {
 
 .home {
     grid-area: home;
+    text-align: center;
 }
 
 .profile {
@@ -46,17 +58,24 @@ body {
 
 
 article {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     padding: 5px;
-    width: auto;
+    width: 200px;
+    row-gap: 2px;
     border: solid black;
+    
 }
 
 article img {
     height: 200px;
+    
 }
 
 article img:hover {
-    transform: scale(2);
+    transform: scale(1.75);
+    box-shadow: 0 20px 20px  rgb(0, 0, 0, .4);
 }
 
 .pagination-container {
@@ -73,13 +92,13 @@ article img:hover {
 
 
 .pagination-button{
-  font-size: 1.1rem;
+  font-size: 1.75rem;
   background-color: transparent;
   border: none;
   margin: 0.25rem 0.25rem;
   cursor: pointer;
-  height: 2rem;
-  width: 2rem;
+  height: 2.75rem;
+  width: 2.75rem;
   border-radius: .2rem;
 }
 
@@ -87,11 +106,16 @@ article img:hover {
     display: none; 
 }
 
-.current {
-    text-align: center;
-}
-
 input {
     background-color: #FD9E74;
     color:#455290;
+}
+
+.quantity {
+    width: 50px;
+}
+
+form button {
+    background-color:#455290;
+    color:#FD9E74;
 }
