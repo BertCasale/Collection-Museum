@@ -80,7 +80,6 @@
 
     article img:hover {
         transform: scale(1);
-        box-shadow: none;
     }
 
     article form button {
