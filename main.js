@@ -1,5 +1,5 @@
 //get the dropdown box from the amiibo.html file
-const amiiboSeries = document.getElementById("series-box");
+const amiiboSeries = document.getElementById("amiibo-box");
 
 //set the base URL
 let amiiboURL = "https://amiiboapi.com/api/amiibo/";
@@ -48,11 +48,11 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
 
     //assign the values of the text input and the dropdown box to variables
     const charaName = event.target.character.value;
-    const seriesName = event.target.series.value;
+    const seriesName = event.target.amiibos.value;
 
     //reset the text box
     event.target.character.value = ""
-    event.target.series.value = "Select the series"
+    event.target.amiibos.value = "Select the series"
 
     //if theres not text of dropdown selection
     if (!charaName && seriesName === "Select the series") {

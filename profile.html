@@ -29,6 +29,25 @@
         <button class="download-button">Download</button>
     </a>
 
+    <br>
+    <br>
+
+    <form class="profile-search">
+        <!-- search by item type -->
+        <label for="item">
+            Select the Item type:
+            <select id="item-box" name="item">
+                <option>Select the item type</option>
+                <option value="amiibos">Amiibos</option>
+            </select>
+        </label>
+        <br>
+        <button type="submit">Show Collection</button>
+    </form>
+
+    <div class="profile-results" id="results" >
+    </div>
+
     <!-- make pages for the content when theres a lot -->
     <nav class="pagination-container">
         <div id="pagination-numbers">
