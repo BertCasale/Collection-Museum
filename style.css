@@ -52,8 +52,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap:10px;
-    
-    border: solid #FD9E74;
+    width: fit-content;
 }
 
 
@@ -64,7 +63,6 @@ article {
     padding: 5px;
     width: 200px;
     row-gap: 2px;
-    border: solid black;
     margin: 5px
 }
 

@@ -5,8 +5,6 @@ Object.keys(sessionStorage).forEach((key) => {
     yourCollection[key] = sessionStorage.getItem(key);
 });
 
-console.log(yourCollection)
-
 //create a function for sorting by name
 function sortByName(objArr){
     objArr.sort((a, b) => {
@@ -34,7 +32,7 @@ let fileInput = document.querySelector(".user-file")
 
 fileInput.onchange = (event) => {
     let userFile = event.target.files[0];
-    console.log(userFile.type)
+
     //make sure its a text file
     if (userFile.type !== "text/plain") {
         //send wrong file tpye message and remove the file
@@ -50,8 +48,6 @@ fileInput.onchange = (event) => {
             yourCollection = JSON.parse(readEvent.target.result);
             //set the session storage to the imported collection;
             sessionStorage = yourCollection;
-
-            console.log(yourCollection, sessionStorage)
 
         }
     }

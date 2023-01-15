@@ -142,8 +142,6 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                             //set a key value pair for the amiibo id and the quantity and save to session storage
                             sessionStorage.setItem(amiiboId, `${quantityInput.value}`)
 
-                            console.log(sessionStorage)
-
                             window.alert(`You have added ${quantityInput.value} ${amiiboName} to your collection.`)
                             quantityInput.value = "";
 
