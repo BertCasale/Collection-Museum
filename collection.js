@@ -93,7 +93,11 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
                         amiiboCollection.push(amiibo);
 
                         //set the quantity key for each amiibo
-                        amiiboCollection[amiiboCollection.length - 1].quantity = quantityValue
+                        amiiboCollection[amiiboCollection.length - 1].quantity = quantityValue;
+
+                        
+
+
                     }
 
 
@@ -112,7 +116,58 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
                     message.append(here);
                     profileResults.append(message);
 
+                } else {
+
+                    //sort the array
+
+                    //loop through the new array
+                    amiiboCollection.forEach((amiibo) => {
+                        //create the element cards for the result page
+                        let profileArticle = document.createElement("article");
+
+                        //create the image
+                        let picture = document.createElement("img")
+                        picture.src = amiibo.image;
+                        picture.alt = amiibo.name;
+                        picture.title = amiibo.name;
+                        
+                        profileArticle.append(picture);
+
+                        //create a quantity p tag
+                        let quantityMessage = document.createElement("p")
+                        quantityMessage.textContent = `Quantity: ${amiibo.quantity}`
+                        profileArticle.append(quantityMessage);
+
+                        //create the remove item button
+                        let removeButton = document.createElement("button");
+                        removeButton.innerText = "Remove"
+                        profileArticle.append(removeButton);
+
+                        profileResults.append(profileArticle);
+
+                        removeButton.addEventListener("click", () => {
+                            //delete the key value pair from storage and your collection
+                            delete sessionStorage[`AMIIBO-${amiibo.head}${amiibo.tail}`];
+
+                            delete yourCollection[`AMIIBO-${amiibo.head}${amiibo.tail}`];
+
+                            //remove the whole article
+                            profileArticle.remove()   
+                                                })
+
+                    })
+
+                    
                 }
+
+                
+
+                //////Pages
+
+                const profileArticleArr = profileResults.querySelectorAll("article");
+
+                //call the pages function
+                pages(current, profileArticleArr, amiiboPerPageLimit);
 
 
             })
