@@ -12,9 +12,7 @@ let amiiboResults = document.querySelector(".amiibo-results");
 
 //get the list of amiibo series
 fetch("https://amiiboapi.com/api/amiiboseries/")
-    .then((res) =>{
-        return res.json()
-    })
+    .then(res => res.json())
     .then((res) => {
         //sort the amiibo series' by name and assign to a variable
         let amiiboSeriesArr = res.amiibo.sort((a, b) => {
@@ -24,10 +22,10 @@ fetch("https://amiiboapi.com/api/amiiboseries/")
         }).filter((word, i, arr) => {
             if (i === 0) {
                 return word;
-            } else if (word.name !== arr[i-1].name){
+            } else if (word.name !== arr[i - 1].name) {
                 return word;
             }
-            
+
         })
         //
         for (series of amiiboSeriesArr) {
@@ -62,7 +60,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
         //if theres text and dropdown selection
     } else if (charaName && seriesName !== "Select the series") {
         amiiboURL += `?character=${charaName}&?amiiboSeries=${seriesName}`
-        
+
 
         //if theres a character name but no series name
     } else if (charaName && seriesName === "Select the series") {
@@ -74,7 +72,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
     }
 
     await fetch(amiiboURL)
-    //get the data
+        //get the data
         .then((res) => {
             //check the status code
             if (res.status === 404) {
@@ -95,11 +93,11 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                 console.log("fetch was successful")
                 return res.json()
             }
-        }) 
-        
+        })
+
         .then((response) => {
             //if the response isnt undefined
-            if (response){
+            if (response) {
                 //reset the div
                 amiiboResults.innerHTML = "";
 
@@ -111,6 +109,7 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                     const amiiboImg = document.createElement("img");
                     amiiboImg.src = amiibo.image;
                     amiiboImg.alt = amiibo.name;
+                    amiiboImg.title = amiibo.name;
 
                     //append the image div to the article
                     amiiboArticle.append(amiiboImg);
@@ -140,13 +139,13 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
                         //check if the value isnt 0
                         if (quantityInput.value > 0) {
 
-                        //set a key value pair for the amiibo id and the quantity and save to session storage
-                        sessionStorage.setItem(amiiboId, `${quantityInput.value}`)
+                            //set a key value pair for the amiibo id and the quantity and save to session storage
+                            sessionStorage.setItem(amiiboId, `${quantityInput.value}`)
 
-                        console.log(sessionStorage)
+                            console.log(sessionStorage)
 
-                        window.alert(`You have added ${quantityInput.value} ${amiiboName} to your collection.`)
-                        quantityInput.value = "";
+                            window.alert(`You have added ${quantityInput.value} ${amiiboName} to your collection.`)
+                            quantityInput.value = "";
 
                         } else {
                             //alert message
@@ -159,15 +158,15 @@ document.querySelector(".amiibo-search").addEventListener("submit", async (event
 
                     //append the article  to the results div
                     amiiboResults.append
-                    (amiiboArticle);
-                    
+                        (amiiboArticle);
+
                     //set the articles class to hidden
                     amiiboArticle.className = "hidden";
 
 
                 }
                 //////Pages
-                
+
                 const amiiboArticleArr = amiiboResults.querySelectorAll("article");
 
                 //call the pages function

@@ -7,20 +7,25 @@ Object.keys(sessionStorage).forEach((key) => {
 
 console.log(yourCollection)
 
+let amiiboIds = {};
+let amiiboCollection = [];
+
+//get the profile results div
+let profileResults = document.querySelector(".profile-results")
 
 //////Import a file
 
 //get the file input
 let fileInput = document.querySelector(".user-file")
 
-fileInput.onchange = (event) => { 
-    let userFile = event.target.files[0]; 
+fileInput.onchange = (event) => {
+    let userFile = event.target.files[0];
     console.log(userFile.type)
     //make sure its a text file
-    if (userFile.type !== "text/plain"){
+    if (userFile.type !== "text/plain") {
         //send wrong file tpye message and remove the file
         window.alert("Please submit a valid text file");
-        fileInput.value= "";
+        fileInput.value = "";
     } else {
         //create a file reader
         const reader = new FileReader();
@@ -33,16 +38,10 @@ fileInput.onchange = (event) => {
             sessionStorage = yourCollection;
 
             console.log(yourCollection, sessionStorage)
-            
+
         }
-
-        
     }
-
 }
-
-
-
 
 //////Export a file
 
@@ -50,7 +49,7 @@ fileInput.onchange = (event) => {
 const downloadLink = document.querySelector(".download-file");
 
 //put the content inside the file, as a string
-const collectionFile = new Blob([JSON.stringify(yourCollection)], {type: "text/plain"});
+const collectionFile = new Blob([JSON.stringify(yourCollection)], { type: "text/plain" });
 
 //add the file
 downloadLink.href = URL.createObjectURL(collectionFile);
@@ -59,12 +58,43 @@ downloadLink.href = URL.createObjectURL(collectionFile);
 downloadLink.download = "collection.txt";
 
 
-    
+document.querySelector(".profile-search").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    //get the value of the dropdown box
+    let itemChosen = event.target.item.value;
+
+    //clear the inner hrml of the results div
+    profileResults.innerHTML = "";
+
+    //if amiibos is chosen
+    if (itemChosen === "amiibos") {
+
+        //fetch the amiibo api
+        await fetch("https://amiiboapi.com/api/amiibo/")
+            .then(res => res.json())
+            .then((res) => {
+                //go through each key in your collection
+                Object.keys(yourCollection).forEach((key) => {
+
+                    if (key.substring(0, 6) === "AMIIBO") {
+                        console.log("amiibo")
+
+                        //
+
+
+                    }
+                })
+            })
+
+
+    }
+})
 
 
 
- 
-    
 
-  
+
+
+
 
