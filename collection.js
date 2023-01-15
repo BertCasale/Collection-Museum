@@ -7,8 +7,7 @@ Object.keys(sessionStorage).forEach((key) => {
 
 console.log(yourCollection)
 
-let amiiboIds = {};
-let amiiboCollection = [];
+
 
 //get the profile results div
 let profileResults = document.querySelector(".profile-results")
@@ -74,17 +73,52 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
         await fetch("https://amiiboapi.com/api/amiibo/")
             .then(res => res.json())
             .then((res) => {
-                //go through each key in your collection
-                Object.keys(yourCollection).forEach((key) => {
 
-                    if (key.substring(0, 6) === "AMIIBO") {
-                        console.log("amiibo")
+                //create an array for the results that we can sort later
+                let amiiboCollection = [];
 
-                        //
+                //go through each amiibo in the api
+                res.amiibo.forEach((amiibo) => {
+                    //get the amiibos head and tail as the same format as your collections keys
+                    let key = `AMIIBO-${amiibo.head}${amiibo.tail}`
 
+                    //check if you have the amiibo in your collection
+                    if (yourCollection[key]) {
+                        console.log(amiibo)
 
+                        //create quantity variable
+                        let quantityValue = yourCollection[key];
+
+                        //push the amiibo into the array made earlier
+                        amiiboCollection.push(amiibo);
+
+                        //set the quantity key for each amiibo
+                        amiiboCollection[amiiboCollection.length - 1].quantity = quantityValue
                     }
+
+
+
                 })
+
+                //check if the collection has any results
+                if (amiiboCollection.length === 0) {
+                    //create message saying empty collection
+                    let message = document.createElement("p")
+                    message.textContent = "Your Amiibo collection is currently empty. Please import a file or search for Amiibos "
+                    //create a link to the amiibos search page
+                    let here = document.createElement("a")
+                    here.href = "./amiibos.html"
+                    here.textContent = "here."
+                    message.append(here);
+                    profileResults.append(message);
+
+                }
+
+
+            })
+
+            .catch((err) => {
+                console.log(err);
             })
 
 
