@@ -74,7 +74,7 @@ article img {
 }
 
 article img:hover {
-    transform: scale(1.75);
+    transform: scale(1.75) translateY(-30px);
 }
 
 .pagination-container {
