@@ -162,9 +162,15 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
                         profileArticle.append(picture);
 
                         //create a quantity p tag
-                        let quantityMessage = document.createElement("p")
+                        let quantityMessage = document.createElement("label")
                         quantityMessage.textContent = `Quantity: ${amiibo.quantity}`
                         profileArticle.append(quantityMessage);
+
+                        //create a hidden p tag with the amiibos name, shown at print only
+                        let printName = document.createElement("label");
+                        printName.className = "print-only"
+                        printName.textContent = amiibo.name;
+                        profileArticle.append(printName);
 
                         //create the remove item button
                         let removeButton = document.createElement("button");

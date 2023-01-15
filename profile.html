@@ -21,43 +21,47 @@
 
     </nav>
     <br>
+    <div class="collection-inputs">
+        <label>Import a file:</label>
+        <input type="file" class="user-file"/>
+        <br>
+        <label>Download your collection:</label>
+        <a class="download-file">
+            <button class="download-button">Download</button>
+        </a>
+
+        <br>
+        <br>
+
+        <form class="profile-search">
+            <!-- search by item type -->
+            <label for="item">
+                Select the Item type:
+                <select id="item-box" name="item">
+                    <option>Select the item type</option>
+                    <option value="amiibos">Amiibos</option>
+                </select>
+            </label>
+            <br>
+
+            <b>Sort By:</b>
+            <label>
+                Name
+                <input id="name" name="sort" type="radio" value="name" checked/>
+            </label>
+
+            <label>
+                Quantity: High to Low
+                <input id="quant" name="sort" type="radio" value="quant" />
+            </label>
+
+            <br>
+            <button type="submit">Show Collection</button>
+        </form>
+
+
+    </div>
     
-    <label>Import a file:</label>
-    <input type="file" class="user-file"/>
-    <br>
-    <label>Download your collection:</label>
-    <a class="download-file">
-        <button class="download-button">Download</button>
-    </a>
-
-    <br>
-    <br>
-
-    <form class="profile-search">
-        <!-- search by item type -->
-        <label for="item">
-            Select the Item type:
-            <select id="item-box" name="item">
-                <option>Select the item type</option>
-                <option value="amiibos">Amiibos</option>
-            </select>
-        </label>
-        <br>
-
-        <b>Sort By:</b>
-        <label>
-            Name
-            <input id="name" name="sort" type="radio" value="name" checked/>
-          </label>
-
-          <label>
-            Quantity: High to Low
-            <input id="quant" name="sort" type="radio" value="quant" />
-          </label>
-
-        <br>
-        <button type="submit">Show Collection</button>
-    </form>
 
     <div class="profile-results" id="results" >
     </div>

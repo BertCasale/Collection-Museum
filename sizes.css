@@ -85,7 +85,41 @@
         font-size:7px;
     }
 
+}
 
+@media only print {
+    article {
+        width: 65px;
+        page-break-inside: avoid;
+    }
+
+    article img {
+        height: 70px;
+    }
+
+    .sticky {
+        display:none;
+    }
+
+    .pagination-container {
+        display:none;
+    }
+
+    .collection-inputs {
+        display: none;
+    }
+
+    button {
+        display: none;
+    }
+
+    .print-only {
+        display:block
+    }
+
+    label {
+        font-size: smaller;
+    }
 }
 
 /* .sticky img */

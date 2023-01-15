@@ -119,3 +119,7 @@ form button {
     background-color:#455290;
     color:#FD9E74;
 }
+
+.print-only {
+    display:none;
+}
