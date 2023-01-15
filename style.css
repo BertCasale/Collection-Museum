@@ -65,11 +65,12 @@ article {
     width: 200px;
     row-gap: 2px;
     border: solid black;
-    
+    margin: 5px
 }
 
 article img {
-    height: 200px;
+    
+    height: 172px;
     
 }
 
