@@ -7,7 +7,22 @@ Object.keys(sessionStorage).forEach((key) => {
 
 console.log(yourCollection)
 
+//create a function for sorting by name
+function sortByName(objArr){
+    objArr.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
 
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        return 0;
+    })
+}
 
 //get the profile results div
 let profileResults = document.querySelector(".profile-results")
@@ -84,7 +99,6 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
 
                     //check if you have the amiibo in your collection
                     if (yourCollection[key]) {
-                        console.log(amiibo)
 
                         //create quantity variable
                         let quantityValue = yourCollection[key];
@@ -95,9 +109,6 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
                         //set the quantity key for each amiibo
                         amiiboCollection[amiiboCollection.length - 1].quantity = quantityValue;
 
-                        
-
-
                     }
 
 
@@ -107,10 +118,10 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
                 //check if the collection has any results
                 if (amiiboCollection.length === 0) {
                     //create message saying empty collection
-                    let message = document.createElement("p")
+                    const message = document.createElement("p")
                     message.textContent = "Your Amiibo collection is currently empty. Please import a file or search for Amiibos "
                     //create a link to the amiibos search page
-                    let here = document.createElement("a")
+                    const here = document.createElement("a")
                     here.href = "./amiibos.html"
                     here.textContent = "here."
                     message.append(here);
@@ -118,7 +129,24 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
 
                 } else {
 
-                    //sort the array
+                    //check if sorting by name or quantity
+                    const sortBy = event.target.sort.value;
+
+                    switch (sortBy){
+                        case "name":
+                            //sort by name
+                            sortByName(amiiboCollection);
+                            break;
+
+                        case "quant":
+                            //sort by name then quantity
+                            sortByName(amiiboCollection);
+
+                            amiiboCollection.sort((a, b) => {
+                                return b.quantity - a.quantity;
+                            })
+                            break;
+                    }
 
                     //loop through the new array
                     amiiboCollection.forEach((amiibo) => {

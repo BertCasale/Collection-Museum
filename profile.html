@@ -24,6 +24,7 @@
     
     <label>Import a file:</label>
     <input type="file" class="user-file"/>
+    <br>
     <label>Download your collection:</label>
     <a class="download-file">
         <button class="download-button">Download</button>
@@ -41,6 +42,19 @@
                 <option value="amiibos">Amiibos</option>
             </select>
         </label>
+        <br>
+
+        <b>Sort By:</b>
+        <label>
+            Name
+            <input id="name" name="sort" type="radio" value="name" checked/>
+          </label>
+
+          <label>
+            Quantity: High to Low
+            <input id="quant" name="sort" type="radio" value="quant" />
+          </label>
+
         <br>
         <button type="submit">Show Collection</button>
     </form>
