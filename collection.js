@@ -8,8 +8,6 @@ Object.keys(sessionStorage).forEach((key) => {
 console.log(yourCollection)
 
 
-
-
 //////Import a file
 
 //get the file input
@@ -29,11 +27,13 @@ fileInput.onchange = (event) => {
         reader.readAsText(userFile, "UTC-8");
         //tell the file reader what to do once it loads
         reader.onload = (readEvent) => {
-            //get the json from the text file
-            const content = JSON.parse(readEvent.target.result);
-            //yourCollection = content;
-            console.log(yourCollection)
-            console.log(content)
+            //get the json from the text file and assign it to my collection
+            yourCollection = JSON.parse(readEvent.target.result);
+            //set the session storage to the imported collection;
+            sessionStorage = yourCollection;
+
+            console.log(yourCollection, sessionStorage)
+            
         }
 
         
