@@ -1,6 +1,7 @@
 # Collectors Museum
 A place where fellow collectors can keep track of their most prized possessions all in one place.
-
+<br>
+[Go to your Museum](https://leafy-lolly-b92f39.netlify.app)
 ![Home Page](./assets/examples/home.png)
 
 ---
@@ -40,8 +41,9 @@ Your collection will be specially formatted in case you want to have a physical 
    - etc., taking suggestions
 3. Let user to update quantities from the profile page
 4. Let user see current quantities of shown on search screen
-5. Improve visual appeal
-6. A login feature, to no longer require downloading file to save collection (requires server)
+5. Disable page number button for current page
+6. Improve visual appeal
+7. A login feature, to no longer require downloading file to save collection (requires server)
 
 ---
 
