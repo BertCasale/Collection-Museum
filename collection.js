@@ -46,8 +46,10 @@ fileInput.onchange = (event) => {
         reader.onload = (readEvent) => {
             //get the json from the text file and assign it to my collection
             yourCollection = JSON.parse(readEvent.target.result);
-            //set the session storage to the imported collection;
-            sessionStorage = yourCollection;
+            //save the collection to the session storage 
+            Object.keys(yourCollection).forEach((key) => {
+                sessionStorage[key] = yourCollection[key];
+            });
 
         }
     }
