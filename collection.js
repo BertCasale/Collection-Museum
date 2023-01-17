@@ -45,10 +45,12 @@ fileInput.onchange = (event) => {
         //tell the file reader what to do once it loads
         reader.onload = (readEvent) => {
             //get the json from the text file and assign it to my collection
-            yourCollection = JSON.parse(readEvent.target.result);
-            //save the collection to the session storage 
-            Object.keys(yourCollection).forEach((key) => {
-                sessionStorage[key] = yourCollection[key];
+            importedCollection = JSON.parse(readEvent.target.result);
+
+            Object.keys(importedCollection).forEach((key) => {
+                //save the keys from the imported collection to the your collection and session storage
+                yourCollection[key] = importedCollection[key];
+                sessionStorage[key] = importedCollection[key];
             });
 
         }
@@ -189,10 +191,7 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
 
                     })
 
-                    
                 }
-
-                
 
                 //////Pages
 
@@ -201,13 +200,11 @@ document.querySelector(".profile-search").addEventListener("submit", async (even
                 //call the pages function
                 pages(current, profileArticleArr, amiiboPerPageLimit);
 
-
             })
 
             .catch((err) => {
                 console.log(err);
             })
-
 
     }
 })
