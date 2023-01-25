@@ -1,7 +1,7 @@
 # Collectors Museum
 A place where fellow collectors can keep track of their most prized possessions all in one place.
 <br>
-[Go to your Museum](https://leafy-lolly-b92f39.netlify.app)
+[Go to your Museum](https://collectors-museum.netlify.app/)
 ![Home Page](./assets/examples/home.png)
 
 ---
